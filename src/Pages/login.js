@@ -59,28 +59,28 @@ setFetching(false)
   return (
     <div className='bg-gray-800 flex flex-col items-center justify-center min-h-screen '>
       <title>HK | Login</title>
-    <div className=" p-7 rounded-xl w-1/4 bg-gray-600">
+    <div className=" p-7 rounded-xl w-1/3 bg-gray-600 border-white border-3 border">
     <div className="">
-        <h1 className='text-2xl font-semibold text-center '>Login</h1>
+        <h1 className='text-3xl font-semibold text-center text-white '>Login</h1>
       </div>
-      <div className="flex-col flex">
+      <div className="flex-col flex p-2">
         <form name='loginForm' className='flex  flex-col p-3' onSubmit={handleLogin}>
-          <label htmlFor="email" className=''>Email</label>
+          <label htmlFor="email" className='text-xl text-gray-300 my-1'>Email</label>
           <input type="text" 
-          className=' mb-4'
+          className=' mb-4 p-2 rounded-md' 
           placeholder='Enter your email' 
           value={userEmail}
           onChange={(e)=>setUserEmail(e.target.value)}/>
-          <label htmlFor="password">Password</label>
+          <label className='text-gray-300 text-xl my-1' htmlFor="password">Password</label>
           <input type="password" 
-          className=' mb-4'
+          className=' mb-4 p-2 rounded-md'
           placeholder='Enter your password'
           value={userPassword}
           required
           
           onChange={e=>setUserPasswod(e.target.value)}
           />
-          <button type='submit' disabled={fetchingToken} className={` w-fit rounded-full p-2 ${fetchingToken ? "bg-red-400 cursor-not-allowed" : 'bg-red-600'} rounded-2xl hover:bg-red-500 text-white`}>{
+          <button type='submit' disabled={fetchingToken} className={` w-fit rounded-full px-6 text-xl p-2 ${fetchingToken ? "bg-red-400 cursor-not-allowed" : 'bg-red-600'} rounded-2xl hover:bg-red-500 text-white`}>{
             fetchingToken ?  <div className="flex">
             Loading
     
