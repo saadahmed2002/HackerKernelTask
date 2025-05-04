@@ -3,8 +3,11 @@ import { Navigate } from 'react-router-dom'
 
 const PrivateRoute = ({children}) => {
     const token = localStorage.getItem('userToken')
-  
-    if(token != null || undefined) return children
+    const user = localStorage.getItem('user')
+
+    if(token !== (null || undefined)  && user !== (null || undefined) ) return children
+ 
+    
   else  return <Navigate to={'/'}/>
 
 

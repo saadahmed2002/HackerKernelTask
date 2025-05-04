@@ -7,7 +7,7 @@ export default function SearchBar({setFindingProduct}) {
     setFindingProduct(e.target.value.trim())
   }
   return (
-    <div className='p-2 bg-blue-500 w-full flex justify-between'>
+    <div className='p-2 bg-blue-300 w-full rounded-t-md flex justify-between'>
 
   <h1 className='p-2  text-3xl'>Search Products</h1>
 

@@ -1,8 +1,5 @@
 import React, {  useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
-
-
 export default function Login() {
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPasswod] = useState('')
@@ -34,6 +31,10 @@ export default function Login() {
     const token =await resp.json()
    if(resp.ok){
     localStorage.setItem("userToken", token)
+    localStorage.setItem("user",{
+      userEmail,
+      userPassword
+    })
 setFetching(false)
     navigator('/homepage')
     
@@ -49,7 +50,7 @@ setFetching(false)
   
   return (
     <div className='bg-gray-800 flex flex-col items-center justify-center min-h-screen '>
-      <title>HK/Login</title>
+      <title>HK | Login</title>
     <div className=" p-7 rounded-xl w-1/4 bg-gray-600">
     <div className="">
         <h1 className='text-2xl font-semibold text-center '>Login</h1>
@@ -71,7 +72,7 @@ setFetching(false)
           
           onChange={e=>setUserPasswod(e.target.value)}
           />
-          <button type='submit' disabled={fetchingToken} className={` w-fit p-2 ${fetchingToken ? "bg-red-400 cursor-not-allowed" : 'bg-red-600'} rounded-2xl hover:bg-red-500 text-white`}>{
+          <button type='submit' disabled={fetchingToken} className={` w-fit rounded-full p-2 ${fetchingToken ? "bg-red-400 cursor-not-allowed" : 'bg-red-600'} rounded-2xl hover:bg-red-500 text-white`}>{
             fetchingToken ?  <div className="flex">
             Loading
     

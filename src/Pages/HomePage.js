@@ -2,24 +2,9 @@ import React, { useState } from 'react'
 import SearchBar from '../Components/SearchBar'
 import AddProductForm from '../Components/AddProductForm'
 import ProductList from '../Components/ProductList'
-import Navbar from '../Components/Navbar'
-import { useNavigate } from 'react-router-dom'
 
 export default function HomePage() {
-  const navigator = useNavigate()
-  const [products, setProducts ] = useState([
-    {
-      name:"Laptop",
-      price:200000
-    },
-    {
-      name:"Mobile",
-      price:18000
-    },{
-      name:"Iphone",
-      price:59000
-    }
-  ])
+  const [products, setProducts ] = useState([])
   const [findingProduct, setFindingProduct] = useState("")
   const addProducts = (newProduct) =>{
     if(newProduct.name === "" || newProduct.price === 0){
@@ -38,20 +23,17 @@ export default function HomePage() {
     const newList = products.filter(item => item.name !== itemName)
     setProducts(newList)
   }
-  const handleLogout =() =>{
-    localStorage.removeItem('userToken')
-    navigator('/')
-  }
+
   
 
   const listedProduct = products.filter(item => item.name?.toLowerCase().includes(findingProduct?.toLowerCase()))
 
   return (
     <div className="flex-col flex items-center">
-      <title>HomePage</title>
+      <title>HK | HomePage</title>
 
-    <div className='flex flex-col full rounded-2xl bg-black items-center mt-8 p-3 gap-3  '>
-      <Navbar logouthandler={handleLogout}/>
+    <div className='flex flex-col w-1/2 rounded-2xl bg-gray-800 items-center mt-8 p-1 gap-3  '>
+    
       <SearchBar setFindingProduct={setFindingProduct}/>
       <AddProductForm addProducts={addProducts}/>
       <ProductList products={listedProduct} removeProduct={removeProduct}/>
