@@ -1,14 +1,22 @@
-import React, {  useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 export default function Login() {
   const [userEmail, setUserEmail] = useState('')
   const [userPassword, setUserPasswod] = useState('')
   const[ fetchingToken, setFetching] = useState(false)
-
   const navigator = useNavigate()
+
+
+  useEffect(()=>{
+   const currentUserToken = localStorage.getItem('userToken')
+   const currentUser = localStorage.getItem('user')
+   if(currentUserToken && currentUser  ){
+     navigator('/homepage')  
+   }
+  })
   const handleLogin = async (e) =>{
     setFetching(true)
-   
+  
     
     try {
       

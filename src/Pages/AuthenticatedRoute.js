@@ -5,7 +5,7 @@ const PrivateRoute = ({children}) => {
     const token = localStorage.getItem('userToken')
     const user = localStorage.getItem('user')
 
-    if(token !== (null || undefined)  && user !== (null || undefined) ) return children
+    if(token   && user ) return children
  
     
   else  return <Navigate to={'/'}/>
